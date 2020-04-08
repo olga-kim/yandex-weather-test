@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.0.2'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'jsonschema2pojo'
+
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    testCompile group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
+    testCompile group: 'org.testng', name: 'testng', version: '7.1.0'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.15.0'
+
+
+    //compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.10', ext: 'pom'
+    compile group: 'com.typesafe', name: 'config', version: '1.4.0'
+
+    compile group: 'org.jsonschema2pojo', name: 'jsonschema2pojo-gradle-plugin', version: '1.0.2'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.3'
+}
+
+test {
+    useTestNG()
+    scanForTestClasses = false
+    include '**/*'
+
+    beforeTest { descriptor ->
+        logger.lifecycle("Gradle running test: ${descriptor}")
+    }
+}
+
+jsonSchema2Pojo {
+    source = files("${project.rootDir}/src/main/resources/json")
+    sourceType = 'json'
+
+    targetDirectory = file("${project.buildDir}/generated-sources")
+    targetPackage = 'response'
+}
