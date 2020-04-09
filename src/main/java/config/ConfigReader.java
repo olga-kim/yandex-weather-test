@@ -18,7 +18,7 @@ public class ConfigReader {
         return config.getString("conf.url");
     }
 
-    public static String getHeader(){
+    public static String getHeader() {
         readConfig();
         return config.getString("conf.header-name");
     }

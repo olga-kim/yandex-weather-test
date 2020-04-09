@@ -16,7 +16,7 @@ public enum Lang {
         this.url = url;
     }
 
-    public String url(){
+    public String url() {
         return url;
     }
 }

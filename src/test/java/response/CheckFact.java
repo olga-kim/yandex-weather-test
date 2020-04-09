@@ -8,13 +8,8 @@ import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
-import org.assertj.core.api.Condition;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
-import request.RequestParams;
-
-import java.util.Objects;
-import java.util.function.Consumer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

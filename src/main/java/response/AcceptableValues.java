@@ -3,6 +3,8 @@ package response;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AcceptableValues {
 
@@ -81,34 +83,20 @@ public class AcceptableValues {
                         1D));
     }
 
-
-
-    /*CLEAR(),
-    PARTLY(),
-    CLOUDY(),
-    OVERCAST(),
-    PARTLY_CLOUDY_AND_LIGHT_RAIN(),
-    PARTLY_CLOUDY_AND_RAIN(),
-    OVERCAST_AND_RAIN(),
-    OVERCAST_THUNDERSTORMS_WITH_RAIN(),
-    CLOUDY_AND_LIGHT_RAIN(),
-    OVERCAST_AND_LIGHT_RAIN(),
-    CLOUDY_AND_RAIN(),
-    OVERCAST_AND_WET_SNOW(),
-    PARTLY_CLOUDY_AND_LIGHT_SNOW(),
-    PARTLY_CLOUDY_AND_SNOW(),
-    OVERCAST_AND_SNOW(),
-    CLOUDY_AND_LIGHT_SNOW(),
-    OVERCAST_AND_LIGHT_SNOW(),
-    CLOUDY_AND_SNOW();
-
-    private String description;
-
-    Condition(String description) {
-        this.description = description;
+    public static List<Integer> getMoonCodes() {
+        return Collections.unmodifiableList(
+                IntStream.rangeClosed(0, 15)
+                        .boxed()
+                        .collect(Collectors.toList()));
     }
 
-    public String description() {
-        return description;
-    }*/
+    public static List<String> getMoonTexts() {
+        return Collections.unmodifiableList(
+                Arrays.asList("full-moon",
+                        "decreasing-moon",
+                        "last-quarter",
+                        "new-moon",
+                        "growing-moon",
+                        "first-quarter"));
+    }
 }
