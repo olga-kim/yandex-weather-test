@@ -10,4 +10,7 @@ public class BaseTest {
     public static void initialise() {
         RestAssured.baseURI = ConfigReader.getUrl();
     }
+    
+    private void emptyMethod(){
+    }
 }
