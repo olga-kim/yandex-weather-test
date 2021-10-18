@@ -12,5 +12,6 @@ public class BaseTest {
     }
     
     private void emptyMethod(){
+        System.out.println("test");
     }
 }
